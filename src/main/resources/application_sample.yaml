@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: drone-platform
+
+  profiles:
+    active: local # local or docker
+  docker:
+    compose:
+      enabled: false # local-> false docker->true
+monitor:
+  sut: 10000 # ms (10sec)
+drone:
+  ttl: 60 # sec (1min)
+log:
+  path: log #log path
+server:
+  port: your server port
+---
+# local
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: your sql source
+    username: your srl username
+    password: your sql password
+    driver-class-name: your driver
+  data:
+    redis:
+      host: your redis host
+      port: your redis port
+      password: your redis password
+
+---
+# docker
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: your sql source
+  data:
+    redis:
+      host: your redis host
+      port: your redis port
+      password: your redis password
