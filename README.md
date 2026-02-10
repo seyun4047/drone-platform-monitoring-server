@@ -1,3 +1,4 @@
+
 # Manufacturer-Independent Drone Platform
 
 The project aims to be a **manufacturer-independent drone platform**, connecting various drone devices with standardized interfaces and performing **Redis-based authentication and status management**.
@@ -12,7 +13,7 @@ This platform consists of multiple independent repositories:
 |---------|---------------------------------------------------|-------------------------------------------------------------------------|
 | Server | Core drone platform server (API, Auth, Telemetry) | [GitHub](https://github.com/seyun4047/drone-platform-server)            |
 | Monitoring Server | Real-time Drone health check monitoring service   | [GitHub](https://github.com/seyun4047/drone-platform-monitoring-server) |
-| Drone Data Tester | Test client for drone telemetry & data simulation | [GitHub](https://github.com/seyun4047/drone-platform-trans-tester)            |
+| Drone Data Tester | Test client for drone telemetry & data simulation | [GitHub](https://github.com/seyun4047/drone-platform-trans-tester)       |
 | Drone Client | Drone Data Collection, Transmission & Analysis | [GitHub](https://github.com/seyun4047/drone-platform-client)            |
 
 ---
@@ -81,3 +82,6 @@ By securing this critical **golden time**, the system enables faster decision-ma
 |:---------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/user-attachments/assets/456dc993-64a0-4ac8-9138-0f5446aaad07" width="450"/>  | <img src="https://github.com/user-attachments/assets/592adb6b-9066-47ac-8f9d-d5117492a6af" width="450"/>  |
 |                          **Validation of Redis tokens for incoming drone data.**                          |                              **Periodic drone connection state monitoring.**                              |
+
+# Drone Platform Mornitoring Server
+---
