@@ -31,6 +31,7 @@ set +a
 ./gradlew bootRun
 ```
 
+---
 ## Monitoring Flow
 The monitoring process follows the flow below: 
 |Monitoring Server|
