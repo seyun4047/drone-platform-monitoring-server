@@ -17,6 +17,7 @@ public class DroneMonitorScheduler {
     private final DroneMonitorService droneMonitorService;
     private final LogPathCreator logPathCreator;
 
+//    Drone Heartbeat TTL
     @Value("${drone.ttl}")
     private int droneTTL;
 
@@ -24,6 +25,10 @@ public class DroneMonitorScheduler {
     @PostConstruct
     public void init() {
         this.logPath = logPathCreator.create().toString();
+
+//        ALL DRONES CONNECTING=0
+        droneMonitorService.resetAllDronesToDisconnected();
+
         LogAppender.prepend(logPath, "Drone monitor service initialized");
         log.info("Drone monitor service initialized");
     }
