@@ -61,7 +61,7 @@ The monitoring process follows the flow below: 
 # Manufacturer-Independent Drone Platform
 
 ---
-It is a **manufacturer-independent integrated drone monitoring platform!**
+It is a **manufacturer-independent integrated drone monitoring platform.**
 
 It is designed to manage various drones within a single environment,
 enabling both **high-end professional drones and commercially available hobby camera drones**
