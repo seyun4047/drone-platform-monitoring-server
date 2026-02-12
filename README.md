@@ -1,3 +1,6 @@
+Korean version: [한국어 문서](https://github.com/seyun4047/drone-platform-monitoring-server/blob/main/README.kr.md)
+
+---
 
 Korean version: [한국어 문서](https://github.com/seyun4047/drone-platform-docs/blob/main/components/monitoring-server/monitoring-server.kr.md)
 
@@ -53,6 +56,7 @@ The monitoring process follows the flow below: 
 |<img width="450" alt="Untitled diagram-2026-02-11-173920" src="https://github.com/user-attachments/assets/adbbeee5-7544-46c0-a276-0a04aae3e303" />|
 
 ---
+
 
 ---
 
@@ -142,3 +146,4 @@ By securing this critical **golden time**, the system enables faster decision-ma
 | <img src="https://github.com/user-attachments/assets/456dc993-64a0-4ac8-9138-0f5446aaad07" width="450"/>  |<img width="450" alt="Untitled diagram-2026-02-11-173920" src="https://github.com/user-attachments/assets/6eea1ba2-663d-4bf1-be1d-c729e3bda2f7" />
   |
 |                          **Validation of Redis tokens for incoming drone data.**                          |                              **Periodic drone connection state monitoring.**                              |
+---
