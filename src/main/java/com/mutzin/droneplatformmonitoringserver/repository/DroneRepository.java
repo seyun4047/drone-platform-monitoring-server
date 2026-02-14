@@ -13,24 +13,11 @@ public interface DroneRepository extends JpaRepository<Drone, Long> {
 
     Optional<Drone> findBySerial(String serial);
 
-    // FIND DRONE WITH ENTIRE SERIALS
-    List<Drone> findBySerialIn(Set<String> serials);
-
-    // SET OFFLINE
     @Modifying
     @Query("""
-        UPDATE Drone d
-        SET d.connecting = false
-        WHERE d.serial IN :serials
-          AND d.connecting = true
-    """)
-    int updateStatusToDisconnected(@Param("serials") Set<String> serials);
-
-    @Modifying
-    @Query("""
-    UPDATE Drone d
-    SET d.connecting = false
-    WHERE d.connecting = true
-    """)
-    int resetAllConnections();
+            UPDATE Drone d
+            SET d.connecting = false
+            WHERE d.serial = :serial
+        """)
+    int updateDisconnectedDrone(@Param("serial") String serial);
 }

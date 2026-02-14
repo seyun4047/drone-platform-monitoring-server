@@ -8,9 +8,9 @@ spring:
     compose:
       enabled: false # local-> false docker->true
 monitor:
-  sut: 10000 # ms (10sec)
+  sut: 10000   # (10sec)
 drone:
-  ttl: 60 # sec (1min)
+  ttl: 60 #sec (1min)
 log:
   path: log #log path
 server:
