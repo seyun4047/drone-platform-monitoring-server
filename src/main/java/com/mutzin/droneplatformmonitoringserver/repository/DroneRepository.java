@@ -13,20 +13,11 @@ import java.util.Optional;
 public interface DroneRepository extends JpaRepository<Drone, Long> {
     Optional<Drone> findBySerial(String serial);
 
-    @Query("""
-        SELECT d
-        FROM Drone d
-        WHERE d.connecting = true
-          AND d.updatedAt < :threshold
-    """)
-    List<Drone> findDisconnectedDrones(@Param("threshold") LocalDateTime threshold);
-
     @Modifying
     @Query("""
-        UPDATE Drone d
-        SET d.connecting = false
-        WHERE d.connecting = true
-          AND d.updatedAt < :threshold
-    """)
-    int updateDisconnectedDrones(@Param("threshold") LocalDateTime threshold);
+            UPDATE Drone d
+            SET d.connecting = false
+            WHERE d.serial = :serial
+        """)
+    int updateDisconnectedDrone(@Param("serial") String serial);
 }
