@@ -1,17 +1,30 @@
+Korean version: [한국어 문서](https://github.com/seyun4047/drone-platform-monitoring-server/blob/main/README.kr.md)
 
-# Drone Platform Mornitoring Server
+---
+
+# Drone Platform Monitoring Server
+
 ---
 ## How It Works
-The monitoring server runs locally and connects to
-  Redis and MySQL instances <br>that are already running on the main [Drone Platform Server](https://github.com/seyun4047/drone-platform-server).
+The monitoring server runs as a separate(local) service and connects to
+Redis and MySQL instances <br>that are already running on the main [Drone Platform Server](https://github.com/seyun4047/drone-platform-server).
 
-## What Does It Monitor
-Its primary role is to detect abnormal drones, including:
-- Drones that have been inactive for a certain period of time
-- Drones that are not responding to heartbeat or status updates
+This system uses a Redis ZSET-based heartbeat monitoring mechanism
+<br>to automatically detect and disconnect drones that stop sending heartbeats.
 
-By identifying and handling these cases,
-<br>the monitoring server helps prevent server overload and maintains the overall stability of the Drone Platform.
+---
+## What It Monitors
+The primary role of this service is to detect abnormal drone states, including:
+- Drones that have been inactive for a specified period
+- Drones that stop sending heartbeat signals
+- Drones that fail to send status updates
+
+---
+## How It Helps
+By identifying and handling these cases, the Monitoring Server helps:
+- Prevent unnecessary server resource consumption
+- Reduce database load
+- Maintain overall platform stability
 
 ---
 
@@ -36,13 +49,18 @@ set +a
 The monitoring process follows the flow below: 
 |Monitoring Server|
 |---|
-|<img src="https://github.com/user-attachments/assets/592adb6b-9066-47ac-8f9d-d5117492a6af" width="450"/> |
+|<img width="450" alt="Untitled diagram-2026-02-11-173920" src="https://github.com/user-attachments/assets/adbbeee5-7544-46c0-a276-0a04aae3e303" />|
 
 ---
+
+
+---
+
 # PROJECT OVERVIEW
 # Manufacturer-Independent Drone Platform
+
 ---
-It is a **manufacturer-independent integrated drone monitoring platform!**
+It is a **manufacturer-independent integrated drone monitoring platform.**
 
 It is designed to manage various drones within a single environment,
 enabling both **high-end professional drones and commercially available hobby camera drones**
@@ -60,6 +78,7 @@ This platform consists of multiple independent repositories:
 | Monitoring Server | Real-time Drone health check monitoring service   | [GitHub](https://github.com/seyun4047/drone-platform-monitoring-server) |
 | Drone Data Tester | Test client for drone telemetry & data simulation | [GitHub](https://github.com/seyun4047/drone-platform-trans-tester)       |
 | Drone Client | Drone Data Collection, Transmission & Analysis | [GitHub](https://github.com/seyun4047/drone-platform-client)            |
+| Docs | Platform Documents, API's | [GitHub](https://github.com/seyun4047/drone-platform-docs)|
 
 ---
 
@@ -106,7 +125,8 @@ By securing this critical **golden time**, the system enables faster decision-ma
 ## System Architecture
 
 ### Overall System Architecture
-<img src="https://github.com/user-attachments/assets/2693c67c-8110-4f79-86f5-22768663c5ae" width="900"/>
+<img height="900" alt="AWS Upload Presigned URL-2026-02-13-170224" src="https://github.com/user-attachments/assets/a2cb756b-b30d-49a5-a503-64afa2519ad0" />
+
 
 ---
 
@@ -114,10 +134,16 @@ By securing this critical **golden time**, the system enables faster decision-ma
 
 |                                                                           Auth Logic                                                                            |                                          Control Data From Drone                                          |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
-|  <img width="450" alt="Redis Token Connection Flow-2026-02-01-182619" src="https://github.com/user-attachments/assets/cf0e6a9e-eeae-4525-aaf1-198c98e61c90" />  | <img src="https://github.com/user-attachments/assets/669647c6-ee30-4bfb-baea-d02e306070ea" width="450"/>  |
+|  <img width="450" alt="Redis Token Connection Flow-2026-02-01-182619" src="https://github.com/user-attachments/assets/cf0e6a9e-eeae-4525-aaf1-198c98e61c90" />  | <img width="450" alt="Redis Token Connection Flow-2026-02-01-182708" src="https://github.com/user-attachments/assets/a344e0c5-b12a-45ab-951c-0cefcc87bf2b" />
+ |
 |                                                   **Redis-based authentication and connection control flow.**                                                   |                    **Processing of control and telemetry data after authentication.**                     |
 
 |                                             Token Validation                                              |                                             Monitoring Server                                             |
 |:---------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/456dc993-64a0-4ac8-9138-0f5446aaad07" width="450"/>  | <img src="https://github.com/user-attachments/assets/592adb6b-9066-47ac-8f9d-d5117492a6af" width="450"/>  |
-|                          **Validation of Redis tokens for incoming drone data.**                          |                              **Periodic drone connection state monitoring.**                              |
+| <img src="https://github.com/user-attachments/assets/456dc993-64a0-4ac8-9138-0f5446aaad07" width="450"/>  |<img width="450" alt="Untitled diagram-2026-02-11-173920" src="https://github.com/user-attachments/assets/6eea1ba2-663d-4bf1-be1d-c729e3bda2f7" />|
+|                          **Validation of Redis tokens for incoming drone data.**                          |                              **Periodic drone connection state monitoring.**                             |
+
+| Back-End <-> Front-End |
+|:---:|
+| <img height="700" alt="AWS Upload Presigned URL-2026-02-13-144904" src="https://github.com/user-attachments/assets/4e956658-5ef2-4c1d-972d-ea669aa09b67" /> |
+| **Communication between Back-End Server and Front-End Dashboard** |
